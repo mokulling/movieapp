@@ -36,14 +36,17 @@
     <script type="text/javascript">
       // Initial array of movies
       var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];
+      var buttonsView = $('#buttons-view')
+      var userInput = $('#movie-input')
 
       // Function for displaying movie data
       function renderButtons() {
-        for (i = 0; i < movies.length; i++) {
-          var currentMovie = movies[i];
-          var movieBtn = $('#buttons-view').append('<button>');
-          movieBtn.textContent = currentMovie;
-          $('#buttons-view').append(movieBtn)
+        buttonsView.empty()
+        for (var i = 0; i < movies.length; i++) {
+          var button = $('<button>').text(movies[i])
+          buttonsView.append(button)
+          
+          //$('#buttons-view').append(movieBtn)
           
 
         // YOUR CODE GOES HERE
@@ -53,6 +56,9 @@
       // This function handles events where one button is clicked
       $("#add-movie").on("click", function(event) {
         event.preventDefault()
+        var newMovie = userInput.val()
+        movies.push(newMovie)
+        renderButtons()
         
           
           
